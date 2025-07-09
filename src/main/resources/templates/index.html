@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NeighborFit - Find Your Perfect Neighborhood</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        .hero-section {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 100px 0;
+        }
+        .feature-card {
+            transition: transform 0.3s ease;
+            border: none;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        .feature-card:hover {
+            transform: translateY(-5px);
+        }
+        .match-score {
+            font-size: 2rem;
+            font-weight: bold;
+            color: #28a745;
+        }
+        .score-excellent { color: #28a745; }
+        .score-very-good { color: #20c997; }
+        .score-good { color: #ffc107; }
+        .score-fair { color: #fd7e14; }
+        .score-poor { color: #dc3545; }
+        .navbar-brand {
+            font-weight: bold;
+            font-size: 1.5rem;
+        }
+        .btn-primary {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border: none;
+        }
+        .btn-primary:hover {
+            background: linear-gradient(135deg, #5a6fd8 0%, #6a4190 100%);
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container">
+            <a class="navbar-brand" href="#">
+                <i class="fas fa-home me-2"></i>NeighborFit
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#features">Features</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#how-it-works">How It Works</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#demo">Demo</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero-section">
+        <div class="container text-center">
+            <h1 class="display-4 mb-4">Find Your Perfect Neighborhood Match</h1>
+            <p class="lead mb-5">NeighborFit uses advanced algorithms to match your lifestyle preferences with the ideal neighborhood characteristics.</p>
+            <div class="row justify-content-center">
+                <div class="col-md-8">
+                    <div class="d-grid gap-2 d-md-flex justify-content-md-center">
+                        <button class="btn btn-light btn-lg px-4 me-md-2" onclick="showRegistrationForm()">
+                            <i class="fas fa-user-plus me-2"></i>Get Started
+                        </button>
+                        <button class="btn btn-outline-light btn-lg px-4" onclick="showDemo()">
+                            <i class="fas fa-play me-2"></i>See Demo
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section id="features" class="py-5">
+        <div class="container">
+            <h2 class="text-center mb-5">Why Choose NeighborFit?</h2>
+            <div class="row">
+                <div class="col-md-4 mb-4">
+                    <div class="card feature-card h-100">
+                        <div class="card-body text-center">
+                            <i class="fas fa-brain fa-3x text-primary mb-3"></i>
+                            <h5 class="card-title">Smart Algorithm</h5>
+                            <p class="card-text">Our advanced matching algorithm considers lifestyle preferences, demographics, and neighborhood characteristics to find your perfect fit.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <div class="card feature-card h-100">
+                        <div class="card-body text-center">
+                            <i class="fas fa-database fa-3x text-primary mb-3"></i>
+                            <h5 class="card-title">Real Data</h5>
+                            <p class="card-text">We use real neighborhood data including demographics, crime rates, school ratings, and amenity information.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <div class="card feature-card h-100">
+                        <div class="card-body text-center">
+                            <i class="fas fa-chart-line fa-3x text-primary mb-3"></i>
+                            <h5 class="card-title">Detailed Analysis</h5>
+                            <p class="card-text">Get comprehensive match scores with detailed breakdowns of lifestyle, demographic, and location compatibility.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- How It Works Section -->
+    <section id="how-it-works" class="py-5 bg-light">
+        <div class="container">
+            <h2 class="text-center mb-5">How It Works</h2>
+            <div class="row">
+                <div class="col-md-3 text-center mb-4">
+                    <div class="bg-primary text-white rounded-circle d-inline-flex align-items-center justify-content-center" style="width: 80px; height: 80px;">
+                        <i class="fas fa-user fa-2x"></i>
+                    </div>
+                    <h5 class="mt-3">1. Create Profile</h5>
+                    <p>Tell us about your lifestyle, preferences, and requirements.</p>
+                </div>
+                <div class="col-md-3 text-center mb-4">
+                    <div class="bg-primary text-white rounded-circle d-inline-flex align-items-center justify-content-center" style="width: 80px; height: 80px;">
+                        <i class="fas fa-search fa-2x"></i>
+                    </div>
+                    <h5 class="mt-3">2. Find Matches</h5>
+                    <p>Our algorithm analyzes thousands of neighborhoods to find your best matches.</p>
+                </div>
+                <div class="col-md-3 text-center mb-4">
+                    <div class="bg-primary text-white rounded-circle d-inline-flex align-items-center justify-content-center" style="width: 80px; height: 80px;">
+                        <i class="fas fa-star fa-2x"></i>
+                    </div>
+                    <h5 class="mt-3">3. Review Results</h5>
+                    <p>Get detailed match scores and neighborhood insights.</p>
+                </div>
+                <div class="col-md-3 text-center mb-4">
+                    <div class="bg-primary text-white rounded-circle d-inline-flex align-items-center justify-content-center" style="width: 80px; height: 80px;">
+                        <i class="fas fa-home fa-2x"></i>
+                    </div>
+                    <h5 class="mt-3">4. Make Decision</h5>
+                    <p>Visit your top matches and make an informed decision about your new home.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Demo Section -->
+    <section id="demo" class="py-5">
+        <div class="container">
+            <h2 class="text-center mb-5">Try Our Demo</h2>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="card">
+                        <div class="card-header">
+                            <h5><i class="fas fa-user me-2"></i>User Registration</h5>
+                        </div>
+                        <div class="card-body">
+                            <form id="registrationForm">
+                                <div class="mb-3">
+                                    <label for="name" class="form-label">Name</label>
+                                    <input type="text" class="form-control" id="name" required>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="email" class="form-label">Email</label>
+                                    <input type="email" class="form-control" id="email" required>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="age" class="form-label">Age</label>
+                                    <input type="number" class="form-control" id="age" min="18" max="120" required>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="incomeLevel" class="form-label">Income Level</label>
+                                    <select class="form-select" id="incomeLevel" required>
+                                        <option value="">Select income level</option>
+                                        <option value="LOW">Low</option>
+                                        <option value="MEDIUM">Medium</option>
+                                        <option value="HIGH">High</option>
+                                        <option value="VERY_HIGH">Very High</option>
+                                    </select>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="familyStatus" class="form-label">Family Status</label>
+                                    <select class="form-select" id="familyStatus" required>
+                                        <option value="">Select family status</option>
+                                        <option value="SINGLE">Single</option>
+                                        <option value="COUPLE">Couple</option>
+                                        <option value="WITH_CHILDREN">With Children</option>
+                                        <option value="EMPTY_NESTER">Empty Nester</option>
+                                    </select>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="maxBudget" class="form-label">Maximum Budget ($)</label>
+                                    <input type="number" class="form-control" id="maxBudget" min="100000" step="50000" required>
+                                </div>
+                                <button type="submit" class="btn btn-primary">
+                                    <i class="fas fa-search me-2"></i>Find Matches
+                                </button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div id="resultsContainer" style="display: none;">
+                        <div class="card">
+                            <div class="card-header">
+                                <h5><i class="fas fa-list me-2"></i>Your Matches</h5>
+                            </div>
+                            <div class="card-body">
+                                <div id="resultsList"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="loadingSpinner" style="display: none;" class="text-center">
+                        <div class="spinner-border text-primary" role="status">
+                            <span class="visually-hidden">Loading...</span>
+                        </div>
+                        <p class="mt-3">Finding your perfect neighborhood matches...</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-dark text-white py-4">
+        <div class="container text-center">
+            <p>&copy; 2024 NeighborFit. All rights reserved.</p>
+            <p class="mb-0">Built with ❤️ for better neighborhood matching</p>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // Demo functionality
+        function showRegistrationForm() {
+            document.getElementById('demo').scrollIntoView({ behavior: 'smooth' });
+        }
+
+        function showDemo() {
+            document.getElementById('demo').scrollIntoView({ behavior: 'smooth' });
+        }
+
+        // Handle form submission
+        document.getElementById('registrationForm').addEventListener('submit', async function(e) {
+            e.preventDefault();
+            
+            const formData = {
+                name: document.getElementById('name').value,
+                email: document.getElementById('email').value,
+                age: parseInt(document.getElementById('age').value),
+                incomeLevel: document.getElementById('incomeLevel').value,
+                familyStatus: document.getElementById('familyStatus').value,
+                maxBudget: parseInt(document.getElementById('maxBudget').value),
+                // Add default values for required fields
+                gender: 'PREFER_NOT_TO_SAY',
+                maritalStatus: 'SINGLE',
+                educationLevel: 'BACHELORS',
+                occupationType: 'OTHER',
+                lifestylePreferences: ['URBAN'],
+                hobbies: ['READING'],
+                petPreference: 'NO_PETS',
+                transportationPreference: 'CAR',
+                preferredLocationType: 'SUBURB',
+                maxCommuteTimeMinutes: 45,
+                maxDistanceMiles: 30,
+                minBudget: 100000
+            };
+
+            // Show loading spinner
+            document.getElementById('loadingSpinner').style.display = 'block';
+            document.getElementById('resultsContainer').style.display = 'none';
+
+            try {
+                // Register user
+                const userResponse = await fetch('/api/users/register', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Authorization': 'Basic ' + btoa('admin:admin123')
+                    },
+                    body: JSON.stringify(formData)
+                });
+
+                if (!userResponse.ok) {
+                    throw new Error('Failed to register user');
+                }
+
+                const user = await userResponse.json();
+
+                // Find matches
+                const matchesResponse = await fetch(`/api/matching/users/${user.id}/matches?limit=5`, {
+                    method: 'POST',
+                    headers: {
+                        'Authorization': 'Basic ' + btoa('admin:admin123')
+                    }
+                });
+
+                if (!matchesResponse.ok) {
+                    throw new Error('Failed to find matches');
+                }
+
+                const matches = await matchesResponse.json();
+                displayResults(matches);
+
+            } catch (error) {
+                console.error('Error:', error);
+                alert('An error occurred. Please try again.');
+            } finally {
+                document.getElementById('loadingSpinner').style.display = 'none';
+            }
+        });
+
+        function displayResults(matches) {
+            const resultsList = document.getElementById('resultsList');
+            resultsList.innerHTML = '';
+
+            if (matches.length === 0) {
+                resultsList.innerHTML = '<p class="text-muted">No matches found. Try adjusting your preferences.</p>';
+                document.getElementById('resultsContainer').style.display = 'block';
+                return;
+            }
+
+            matches.forEach((match, index) => {
+                const scoreClass = getScoreClass(match.overallScore);
+                const matchCard = `
+                    <div class="card mb-3">
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-md-8">
+                                    <h6 class="card-title">${match.neighborhoodName}</h6>
+                                    <p class="card-text text-muted">${match.city}, ${match.state} ${match.zipCode}</p>
+                                    <div class="row">
+                                        <div class="col-6">
+                                            <small class="text-muted">Income: $${match.medianIncome?.toLocaleString() || 'N/A'}</small><br>
+                                            <small class="text-muted">Home Value: $${match.medianHomeValue?.toLocaleString() || 'N/A'}</small>
+                                        </div>
+                                        <div class="col-6">
+                                            <small class="text-muted">Safety Score: ${match.safetyScore?.toFixed(1) || 'N/A'}/10</small><br>
+                                            <small class="text-muted">Walk Score: ${match.walkScore?.toFixed(0) || 'N/A'}/100</small>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-4 text-end">
+                                    <div class="match-score ${scoreClass}">${match.overallScore.toFixed(0)}%</div>
+                                    <small class="text-muted">${match.matchStrength}</small>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                `;
+                resultsList.innerHTML += matchCard;
+            });
+
+            document.getElementById('resultsContainer').style.display = 'block';
+        }
+
+        function getScoreClass(score) {
+            if (score >= 90) return 'score-excellent';
+            if (score >= 80) return 'score-very-good';
+            if (score >= 70) return 'score-good';
+            if (score >= 60) return 'score-fair';
+            return 'score-poor';
+        }
+    </script>
+</body>
+</html> 
